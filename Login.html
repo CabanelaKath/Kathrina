@@ -1,0 +1,208 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">          
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Form</title>
+
+<style>
+    
+                                    /* Reset default spacing */
+    *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Segoe UI, sans-serif;
+    }
+                                
+                                    /* Body style */
+    body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(270deg,#0f0c29,#302b63,#24243e);
+    background-size:600% 600%;
+    animation:bgmove 10s infinite alternate;
+    color:white;
+    }
+
+                                    /* Bg animation */
+    @keyframes bgmove{
+    0%{background-position:left;}
+    100%{background-position:right;}
+    }
+
+                                    /* Login container box */
+    .container{
+    background:rgba(0,0,0,0.6);
+    padding:45px;
+    width:350px;
+    border-radius:20px;
+    box-shadow:0 0 25px #00f7ff;
+    backdrop-filter:blur(12px);
+    border:1px solid rgba(0,255,255,0.3);
+    }
+
+                                    /* Login title */
+    h2{
+    text-align:center;
+    margin-bottom:30px;
+    letter-spacing:4px;
+    color:#00f7ff;
+    text-shadow:0 0 10px #00f7ff;
+    }
+
+                                    /* Input field container */
+    .input-box{
+    margin-bottom:20px;
+    }
+
+                                    /* Label style */
+    label{
+    font-size:14px;
+    color:#ccc;
+    }
+
+                                    /* Textbox and password input style */
+    input[type="text"],
+    input[type="password"]{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:rgba(255,255,255,0.1);
+    color:white;
+    transition:0.3s;
+    }
+
+                                    /* Input effect when clickec */
+    input:focus{
+    box-shadow:0 0 10px #00f7ff;
+    background:rgba(255,255,255,0.15);
+    }
+
+                                    /* Remember me section */
+    .remember{
+    display:flex;
+    align-items:center;
+    margin-bottom:20px;
+    font-size:14px;
+    }
+
+                                    /* Button container */
+    .buttons{
+    display:flex;
+    gap:10px;
+    }
+
+                                    /* General button style */
+    button{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+    }
+
+                                    /* Submit button style */
+    .submit{
+    background:#00f7ff;
+    color:black;
+    }
+
+                                    /* Submit button hover effect */
+    .submit:hover{
+    box-shadow:0 0 15px #00f7ff;
+    transform:scale(1.05);
+    }
+
+                                    /* Cancel button style */    
+    .cancel{
+    background:#ff2e63;
+    color:white;
+    }
+
+                                    /* Cancel button hover effect */
+    .cancel:hover{
+    box-shadow:0 0 15px #ff2e63;
+    transform:scale(1.05);
+    }
+
+</style>
+    
+<script>
+    // STEP 1: Set your correct username & password here
+    var correctUsername = "admin";
+    var correctPassword = "1234";
+    
+    // STEP 2: This function runs when submit is clicked
+    
+    function checkLogin() {
+        // Read whatever the user typed into each field
+        var enteredUsername = document.getElementById("username").value;
+        var enteredPassword = document.getElementById("password").value;
+        
+        // Compare what the user typed with the correct values
+        if (enteredUsername === correctUsername && enteredPassword === correctPassword) {
+            // If the password and username is correct, Go to index.html
+            window.location.href = "MyPage.html";
+        } else {
+            // If the password and username is wrong, show the error message
+            document.getElementById("error-message").style.display = "block";
+        }
+    }
+    
+    // Step 3: Cancel button clears the form
+    function clearForm() {
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+        document.getElementById("error-message").style.display = "none";
+    }
+</script>
+
+</head>
+
+<body>
+    
+                                    
+    <div class="container">
+
+    <h2>LOGIN</h2>
+    
+        <p id="error-message" style="display:none">Incorrect username or password. </p>
+    <form>
+
+                                    
+    <div class="input-box">
+    <label for="username">Username</label>
+    <input type="text" id="username" placeholder="Enter username">
+    </div>
+
+                                   
+    <div class="input-box">
+    <label for="password">Password</label>
+    <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+                                   
+    <div class="remember">
+    <input type="checkbox" id="remember" name="remember"> 
+    <label for="remember">Remember</label>
+    </div>
+
+                                    
+    <div class="buttons">
+    <button type="button" onclick="checkLogin()">Submit</button>
+    <button type="reset" onclick="clearForm()">Cancel</button>
+    </div>
+
+    </form>
+
+    </div>
+
+</body>
+</html>
